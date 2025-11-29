@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Carregando...</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: radial-gradient(circle at center,
+        #12014d,
+        #08012b,
+        #000000);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      color: #fff;
+    }
+
+    .container {
+      text-align: center;
+      animation: fadeIn 1.2s ease-out forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    /* Ícone com degradê MUITO mais vibrante e radiante */
+    .icon {
+      font-size: 200px;
+      font-weight: bold;
+      background: conic-gradient(
+        from 0deg,
+        #2a005a,   /* azul neon */
+        #500070,   /* azul elétrico */
+        #ffffff,   /* roxo intenso */
+        #500070,   /* roxo neon brilhante */
+        #2a005a    /* volta ao azul neon */
+      );
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+
+      animation: pulse 3s infinite alternate ease-in-out,
+                 rotationGlow 6s linear infinite;
+    }
+/**/
+    @keyframes pulse {
+      from { transform: scale(1); }
+      to   { transform: scale(1.15); }
+    }
+
+    /* efeito de rotação suave no brilho */
+    @keyframes rotationGlow {
+      0%   { filter: drop-shadow(0 0 10px hsl(184, 100%, 50%)); }
+      25%  { filter: drop-shadow(0 0 10px #860000); }
+      50%  { filter: drop-shadow(0 0 10px rgb(252, 253, 164)); }
+      75%  { filter: drop-shadow(0 0 10px #eeff00); }
+      100% { filter: drop-shadow(0 0 10px #fcfcfc); }
+    }
+
+    .progress-bar {
+      width: 300px;
+      height: 10px;
+      background: rgb(0, 0, 0);
+      border-radius: 20px;
+      margin: 20px auto 0;
+      overflow: hidden;
+      box-shadow: 0 0 10px #fefdff;
+    }
+
+    .progress {
+      height: 100%;
+      width: 0;
+      background: linear-gradient(90deg, #220147, #ffffff);
+      transition: width 0.05s linear;
+      box-shadow: 0 0 15px #ff0000;
+    }
+
+    .loading-text {
+      margin-top: 10px;
+      font-size: 14px;
+      opacity: 0.8;
+    }
+  </style>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const barra = document.querySelector(".progress");
+
+      let progresso = 0;
+      const duracaoTotal = 5000; // 3 segundos
+      const intervalo = 30;       
+      const incremento = 100 / (duracaoTotal / intervalo);
+
+      const timer = setInterval(() => {
+        progresso += incremento;
+        barra.style.width = progresso + "%";
+
+        if (progresso >= 100) {
+          clearInterval(timer);
+          window.location.href = "treinamentos.html";
+        }
+      }, intervalo);
+    });
+  </script>
+
+</head>
+<body>
+
+  <div class="container">
+    <div class="icon">⟬⧈⟭</div>
+
+    <div class="progress-bar">
+      <div class="progress"></div>
+    </div>
+
+    <div class="loading-text">Carregando...</div>
+  </div>
+
+</body>
+</html>

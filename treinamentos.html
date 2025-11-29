@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNIT Academy | Formação Full Stack IA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- VARIÁVEIS E GERAL --- */ 
+        :root {
+            --bg-dark: #050510;
+            --card-bg: #151525;
+            --primary: #7c3aed;
+            --neon-blue: #00d4ff;
+            --neon-green: #00ff9d;
+            --neon-orange: #ff9f43;
+            --text-main: #ffffff;
+            --text-muted: #a0a0b0;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body { background-color: var(--bg-dark); color: var(--text-main); overflow-x: hidden; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 20px; }
+
+        /* --- HEADER E VSL --- */
+        .header-sales { text-align: center; padding: 40px 0; }
+        .pre-head { color: var(--neon-green); font-weight: 700; letter-spacing: 2px; text-transform: uppercase; font-size: 0.9rem; }
+        .main-head { font-size: 2.8rem; font-weight: 800; line-height: 1.1; margin: 15px 0; background: linear-gradient(to right, #fff, #a29bfe); background-clip: text; -webkit-text-fill-color: transparent; }
+        .sub-head { color: var(--text-muted); font-size: 1.2rem; max-width: 700px; margin: 0 auto; }
+
+        .vsl-box {
+            width: 100%; aspect-ratio: 16/9; background: #000; border-radius: 15px; overflow: hidden;
+            border: 2px solid #2a2a45; box-shadow: 0 0 50px rgba(124, 58, 237, 0.3); margin: 30px 0 50px 0;
+        }
+
+        /* --- RESUMO (GRID PEQUENO) --- */
+        .modules-summary { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin-bottom: 60px; }
+        .summary-card { background: #151525; padding: 15px; border-radius: 10px; border: 1px solid #2a2a45; display: flex; align-items: center; gap: 10px; }
+        .summary-card i { font-size: 1.5rem; }
+
+        /* --- MANIFESTO --- */
+        .manifesto-box {
+            background: linear-gradient(180deg, rgba(124, 58, 237, 0.05), rgba(0,0,0,0)); 
+            border: 1px solid var(--primary); padding: 40px; border-radius: 15px; 
+            margin: 60px 0; text-align: left; position: relative; overflow: hidden;
+        }
+        .manifesto-blur { position: absolute; top: 0; right: 0; width: 100px; height: 100px; background: var(--primary); filter: blur(80px); opacity: 0.2; }
+
+        /* --- SEÇÃO DETALHADA --- */
+        .train-section { padding: 40px 0; text-align: center; border-top: 1px solid #2a2a45; }
+        .train-section h2 { font-size: 2.5rem; margin-bottom: 10px; color: #fff; }
+        .train-intro { color: var(--text-muted); font-size: 1.1rem; max-width: 800px; margin: 0 auto 50px auto; }
+
+        .train-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+
+        .train-card {
+            background: rgba(20, 25, 40, 0.6); border: 1px solid rgba(80, 150, 255, 0.3);
+            padding: 25px; border-radius: 15px; transition: 0.3s ease; text-align: left;
+            display: flex; flex-direction: column;
+        }
+        .train-card:hover { transform: translateY(-10px); box-shadow: 0 0 25px rgba(0, 212, 255, 0.2); border-color: var(--neon-blue); }
+        
+        .mural-video { width: 100%; height: 180px; object-fit: cover; border-radius: 10px; margin-bottom: 20px; border: 1px solid #2a2a45; background: #000; }
+        
+        .train-card h3 { color: var(--neon-blue); font-size: 1.4rem; margin-bottom: 10px; min-height: 50px; }
+        .train-card p { color: #ccc; margin-bottom: 20px; font-size: 0.95rem; }
+        .train-card ul { list-style: none; margin-bottom: 20px; flex-grow: 1; }
+        .train-card ul li { color: #9bbcff; margin: 8px 0; font-size: 0.9rem; display: flex; gap: 8px; }
+        .train-card ul li::before { content: "•"; color: var(--neon-green); font-weight: bold; }
+
+        .train-btn {
+            width: 100%; padding: 12px; background: rgba(77, 166, 255, 0.1); border: 1px solid var(--neon-blue);
+            border-radius: 10px; color: var(--neon-blue); font-weight: bold; cursor: pointer; transition: 0.2s;
+        }
+        .train-btn:hover { background: var(--neon-blue); color: #000; }
+        /* --- ESTILO DOS MINI CARDS (BADGES) --- */
+.train-card {
+    position: relative; /* Importante para posicionar a etiqueta */
+}
+
+.card-badge {
+    position: absolute;
+    top: -12px;
+    right: 20px;
+    padding: 5px 15px;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    z-index: 10;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+/* Cores das etiquetas */
+.badge-purple { background: var(--primary); color: #fff; box-shadow: 0 0 10px var(--primary); }
+.badge-green { background: #008f58; color: #fff; }
+.badge-blue { background: #006eb3; color: #fff; }
+
+/* Estilo especial para o NOVO */
+.badge-new {
+    background: var(--neon-orange);
+    color: #000;
+    box-shadow: 0 0 15px var(--neon-orange);
+    animation: pulseBadge 2s infinite;
+}
+
+@keyframes pulseBadge {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+        /* --- DEPOIMENTOS (ROTATOR) --- */
+        .comments-section { margin-top: 80px; max-width: 800px; margin-left: auto; margin-right: auto; text-align: center; }
+        .comments-section h3 { color: var(--neon-blue); margin-bottom: 30px; font-size: 1.8rem; }
+        .comment {
+            background: rgba(20, 20, 35, 0.7); border: 1px solid rgba(0,234,255,0.15); border-radius: 12px;
+            padding: 20px; display: flex; align-items: center; gap: 20px; text-align: left;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5); min-height: 100px;
+        }
+        .grl-avatar-small {
+            width: 50px; height: 50px; background: #1c2658; border-radius: 50%; display: flex;
+            align-items: center; justify-content: center; font-size: 18px; color: var(--neon-blue);
+            border: 2px solid var(--primary); flex-shrink: 0;
+        }
+        .user-name { color: var(--primary); font-weight: 700; margin-bottom: 5px; }
+        .user-text { color: #e0e0e0; font-style: italic; font-size: 0.95rem; }
+
+        /* --- MODAL --- */
+        .Mmodal {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.9); z-index: 2000; overflow-y: auto;
+        }
+        .Mmodal-content {
+            background: #0b0014; border: 1px solid var(--primary); padding: 30px; width: 90%; max-width: 600px;
+            margin: 50px auto; border-radius: 15px; box-shadow: 0 0 30px rgba(124, 58, 237, 0.4);
+            color: #fff; position: relative; animation: fadeIn 0.3s;
+        }
+        .Mclose { position: absolute; top: 15px; right: 20px; font-size: 24px; cursor: pointer; color: #fff; }
+        .Mclose:hover { color: var(--primary); }
+        .Mmodal-content h2 { color: var(--neon-blue); margin-bottom: 15px; }
+        .Mmodal-content h3 { color: var(--neon-green); margin-top: 20px; margin-bottom: 10px; font-size: 1.1rem; }
+        .Mmodal-content ul { padding-left: 20px; color: #ccc; line-height: 1.6; }
+        .Mmodal-content p { line-height: 1.6; color: #ddd; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Atualize ou Adicione isso na parte do Modal */
+.Mmodal-content ul { 
+    padding-left: 0; /* Remove o recuo padrão */
+    list-style: none; /* Remove as bolinhas feias */
+    margin-top: 20px;
+    max-height: 400px; /* Limita altura se a lista for gigante */
+    overflow-y: auto; /* Cria barra de rolagem se precisar */
+    padding-right: 10px; /* Espaço para a barra de rolagem não colar */
+}
+
+/* Personalizando a barra de rolagem interna do modal */
+.Mmodal-content ul::-webkit-scrollbar { width: 5px; }
+.Mmodal-content ul::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 10px; }
+.Mmodal-content ul::-webkit-scrollbar-track { background: #1a1a2e; }
+
+        /* --- OFERTA FINAL --- */
+        .offer-card {
+            background: linear-gradient(160deg, #1a1a2e 0%, #0d0d1e 100%);
+            border: 1px solid var(--neon-blue); border-radius: 20px; padding: 40px;
+            text-align: center; position: relative; overflow: hidden; margin-top: 80px;
+        }
+        .offer-card::before {
+            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+            background: radial-gradient(circle, rgba(124,58,237,0.1) 0%, transparent 60%);
+            animation: rotate 10s linear infinite; pointer-events: none;
+        }
+        .price-old { text-decoration: line-through; color: #a0a0b0; font-size: 1.2rem; }
+        .price-new { font-size: 4rem; font-weight: 800; color: #fff; margin: 10px 0; text-shadow: 0 0 20px rgba(255,255,255,0.5); }
+        .price-new span { font-size: 1.2rem; color: var(--neon-green); font-weight: 600; }
+        
+        .btn-buy {
+            display: inline-block; width: 100%; max-width: 400px;
+            background: linear-gradient(90deg, #00ff9d, #00d4ff);
+            color: #000; font-weight: 800; font-size: 1.4rem; padding: 20px;
+            border-radius: 50px; text-decoration: none; text-transform: uppercase;
+            box-shadow: 0 0 30px rgba(0, 255, 157, 0.4); animation: pulse 2s infinite; margin-top: 20px;
+        }
+        .btn-buy:hover { transform: scale(1.02); }
+        @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(0, 255, 157, 0.7); } 70% { box-shadow: 0 0 0 20px rgba(0, 255, 157, 0); } 100% { box-shadow: 0 0 0 0 rgba(0, 255, 157, 0); } }
+
+        @media (max-width: 600px) { .main-head { font-size: 2rem; } .price-new { font-size: 3rem; } .comment { flex-direction: column; text-align: center; } }
+        /* --- Botão Voltar --- */
+.back-btn {
+    position: fixed; /* Fixa o botão na tela */
+    top: 20px;       /* Distância do topo */
+    left: 20px;      /* Distância da esquerda */
+    background: var(--card-bg); /* Fundo similar aos seus cards */
+    color: var(--text-main);    /* Cor do texto */
+    padding: 10px 20px; /* Preenchimento interno */
+    border: 1px solid #2a2a45; /* Borda sutil */
+    border-radius: 10px;        /* Cantos arredondados */
+    cursor: pointer;            /* Ícone de mão ao passar o mouse */
+    font-size: 1rem;            /* Tamanho da fonte */
+    font-weight: 600;           /* Peso da fonte */
+    display: flex;              /* Para alinhar ícone e texto */
+    align-items: center;        /* Alinhamento vertical */
+    gap: 8px;                   /* Espaçamento entre ícone e texto */
+    z-index: 1000;              /* Garante que o botão fique acima de outros elementos */
+    transition: background-color 0.3s ease, border-color 0.3s ease; /* Transição suave */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Sombra para destaque */
+}
+
+.back-btn:hover {
+    background-color: #2a2a45; /* Escurece um pouco no hover */
+    border-color: var(--primary); /* Destaca a borda com sua cor primária */
+}
+
+.back-btn i {
+    color: var(--primary); /* Cor do ícone */
+}
+
+/* Responsividade básica para o botão voltar em telas menores */
+@media (max-width: 768px) {
+    .back-btn {
+        top: 10px;
+        left: 10px;
+        padding: 8px 15px;
+        font-size: 0.9rem;
+    }
+}
+    </style>
+</head>
+<body>
+    <a href="bio.html" class="back-btn">
+    <i class="fa-solid fa-user-astronaut"></i> Minha Bio </a>
+    <div class="container">
+        
+        <div style="text-align: center; margin-bottom: 20px; color: #555;">
+            <i class="fa-solid fa-lock"></i> Gustavo Kali apresenta:
+        </div>
+
+        <div class="header-sales">
+            <div class="pre-head">// MÉTODO IA-FIRST DEVELOPMENT</div>
+            
+            <h1 class="main-head">
+                4 Formações em 1: <br>
+                Construa seu Próprio <span style="color: var(--neon-blue);">Ecossistema Digital</span>
+            </h1>
+            
+            <p class="sub-head">
+                Do Zero ao Full Stack (Web, Mobile, Bots e Design). <br>
+                Pare de depender de programadores: use a IA para tirar suas ideias do papel em <span style="color: var(--neon-green); font-weight: 700;">tempo recorde.</span>
+            </p>
+            <p class="sub-head">A única formação que te ensina a criar um Ecossistema Digital Completo, tudo usando IA para programar por você.</p>
+        </div>
+
+        <div class="vsl-box">
+            <!-- ⚠️ ID DO SEU VÍDEO DO YOUTUBE AQUI -->
+            <iframe 
+                width="100%" height="100%" 
+                src="https://www.youtube.com/embed/1YWSX9l_-H8" 
+                title="Vídeo UNIT" frameborder="0" allowfullscreen>
+            </iframe>
+        </div>
+
+        <!-- RESUMO RÁPIDO DOS MÓDULOS -->
+        <div class="modules-summary">
+            <div class="summary-card"><i class="fa-solid fa-wand-magic-sparkles" style="color:var(--neon-blue)"></i> <span>IA Criativa</span></div>
+            <div class="summary-card"><i class="fa-solid fa-robot" style="color:var(--neon-green)"></i> <span>Automação</span></div>
+            <div class="summary-card"><i class="fa-solid fa-code" style="color:var(--primary)"></i> <span>Web Full Stack</span></div>
+            <div class="summary-card"><i class="fa-solid fa-mobile-screen" style="color:var(--neon-orange)"></i> <span>Apps Mobile</span></div>
+        </div>
+
+        <!-- EXPLICAÇÃO DO MÉTODO (IA-FIRST) -->
+        <section style="text-align: center; margin: 60px 0; padding: 0 20px;">
+            
+            <h2 style="color: #fff; font-size: 2rem; margin-bottom: 30px;">
+                O que é o <span style="color: var(--neon-blue); border-bottom: 3px solid var(--primary);">IA-FIRST?</span>
+            </h2>
+
+            <div style="max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 30px;">
+                
+                <!-- COMPARAÇÃO -->
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+                    
+                    <!-- O JEITO ANTIGO -->
+                    <div style="background: rgba(255, 0, 0, 0.05); border: 1px solid rgba(255, 0, 0, 0.2); padding: 25px; border-radius: 15px; text-align: left;">
+                        <h4 style="color: #ff5e57; font-size: 1.1rem; margin-bottom: 15px;"><i class="fa-solid fa-xmark"></i> O Programador Tradicional</h4>
+                        <p style="color: #a0a0b0; font-size: 0.95rem; line-height: 1.6;">
+                            Escreve código linha por linha. Perde horas decorando sintaxes complexas, caçando vírgulas erradas e travado em bugs técnicos. É um trabalho braçal e lento.
+                        </p>
+                    </div>
+
+                    <!-- O JEITO NOVO (SEU) -->
+                    <div style="background: rgba(0, 255, 157, 0.05); border: 1px solid var(--neon-green); padding: 25px; border-radius: 15px; text-align: left; position: relative;">
+                        <div style="position: absolute; top: -12px; right: 20px; background: var(--neon-green); color: #000; padding: 2px 10px; border-radius: 20px; font-weight: 800; font-size: 0.7rem;">MÉTODO UNIT</div>
+                        <h4 style="color: var(--neon-green); font-size: 1.1rem; margin-bottom: 15px;"><i class="fa-solid fa-check"></i> O Arquiteto de Soluções</h4>
+                        <p style="color: #e0e0e0; font-size: 0.95rem; line-height: 1.6;">
+                            No método <strong>IA-FIRST</strong>, a Inteligência Artificial faz o trabalho braçal (escreve o código). Nós fazemos o intelectual: dizemos o que queremos e corrigimos.
+                        </p>
+                    </div>
+
+                </div>
+
+                <!-- A FRASE DE IMPACTO -->
+                <h3 style="color: #fff; font-size: 1.4rem; font-weight: 400; line-height: 1.6; margin-top: 10px;">
+                    "É assim que um iniciante consegue fazer em <strong style="color: var(--neon-blue);">2 horas</strong> o que um sênior levaria <strong style="color: var(--primary);">2 dias</strong>."
+                </h3>
+
+            </div>
+        </section>
+
+        <!-- MANIFESTO -->
+        <div class="manifesto-box">
+            <div class="manifesto-blur"></div>
+            <h3 style="color: var(--neon-green); font-size: 1.6rem; margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
+                <i class="fa-solid fa-rocket"></i> A Nova Economia Digital
+            </h3>
+            <p style="color: #e0e0e0; font-size: 1.05rem; line-height: 1.8; margin-bottom: 20px;">
+                Sabemos que, hoje em dia, o ativo mais valioso que existe é o seu <strong>Tempo</strong>.
+                No modelo tradicional, muitas pessoas talentosas ficam travadas por falta de recursos, falta de equipe ou simplesmente por estarem sobrecarregadas com tarefas repetitivas.
+            </p>
+            <p style="color: #fff; font-size: 1.1rem; line-height: 1.8; font-weight: 600; border-left: 4px solid var(--neon-blue); padding-left: 15px; margin: 25px 0;">
+                A UNIT surgiu para resolver essa equação. <br>
+                Acreditamos que a tecnologia deve servir para potencializar o ser humano. Nosso foco é te dar a autonomia técnica para fazer em horas o que antes levava semanas.
+            </p>
+            <p style="color: var(--text-muted); font-size: 1rem; line-height: 1.8;">
+                Ao dominar a IA e a Programação, você ganha alavancagem. Você passa a construir suas próprias ferramentas e projetos, garantindo a independência necessária para crescer profissionalmente e realizar seus objetivos.
+            </p>
+            <p style="color: var(--neon-orange); font-size: 0.95rem; margin-top: 25px; font-style: italic; text-align: right;">— Gustavo Kali, Fundador.</p>
+        </div>
+
+        <!-- SEÇÃO DETALHADA DOS TREINAMENTOS -->
+        
+        <section id="treinamentos" class="train-section">
+            <h2>Grade Curricular Detalhada</h2>
+            <p class="train-intro">
+            Explore o conteúdo que vai transformar sua carreira. Aprenda com projetos reais e evolua no seu próprio ritmo.
+            </p>
+
+            <div class="train-grid">
+            
+            <!-- 01: IA Criativa -->
+            <div class="train-card">
+                <!-- ETIQUETA -->
+                <div class="card-badge badge-purple">Tendência</div>
+                
+                <video class="mural-video" autoplay muted loop playsinline>
+                <source src="videos/treinamento1.mp4" type="video/mp4">
+                </video>
+                <h3>IA Criativa & Design</h3>
+                <p>Domine o Google Flow, ImageFX e produção digital ilimitada.</p>
+                <ul>
+                <li>Domine o Google Labs (ImageFX & Veo)</li>
+                <li>Workflow de Produção Ilimitada (Kling/Luma)</li>
+                <li>Crie vídeos e avatares falantes com IA</li>
+                <li>Design de interfaces de alto impacto (UI/UX)</li>
+                </ul>
+                <button class="train-btn MopenModal" data-train="criativa">Ver Ementa Completa</button>
+            </div>
+ 
+            <!-- 02: Automação -->
+            <div class="train-card">
+                <!-- ETIQUETA -->
+                <div class="card-badge badge-green">Essencial</div>
+
+                <video class="mural-video" autoplay muted loop playsinline>
+                <source src="videos/treinamento2.mp4" type="video/mp4">
+                </video>
+                <h3>Automação & Bots</h3>
+                <p>Crie sistemas que trabalham por você usando IA aplicada.</p>
+                <ul>
+                <li>Crie bots inteligentes (WhatsApp/Telegram)</li>
+                <li>Automatize processos e fluxos de trabalho</li>
+                <li><strong>Robôs Traders:</strong> 3 estratégias automatizadas</li>
+                <li>Sistemas que operam 24h por dia</li>
+                </ul>
+                <button class="train-btn MopenModal" data-train="automacao">Ver Ementa Completa</button>
+            </div>
+
+            <!-- 03: Web -->
+            <div class="train-card">
+                <!-- ETIQUETA -->
+                <div class="card-badge badge-blue">Completo</div>
+
+                <video class="mural-video" autoplay muted loop playsinline>
+                <source src="videos/treinamento3.1.mp4" type="video/mp4">
+                </video>
+                <h3>Programação Web Full Stack</h3>
+                <p>Aprenda a programar do zero com auxílio de IAs avançadas.</p>
+                <ul>
+                <li>HTML, CSS, JS, PHP, Python e Banco de Dados</li>
+                <li><strong>Projetos:</strong> Rede Social, Blog e Plataforma Crypto</li>
+                <li>Integração de APIs e sistemas de pagamento</li>
+                <li>Construção de portfólio profissional</li>
+                </ul>
+                <button class="train-btn MopenModal" data-train="web">Ver Ementa Completa</button>
+            </div>
+
+            <!-- 04: Mobile -->
+            <div class="train-card" style="border-color: var(--neon-orange);">
+                <!-- ETIQUETA NOVO -->
+                <div class="card-badge badge-new"><i class="fa-solid fa-star"></i> NOVO</div>
+
+                <video class="mural-video" autoplay muted loop playsinline>
+                <source src="videos/inova.mp4" type="video/mp4">
+                </video>
+                <h3 style="color: var(--neon-orange);">Criação de Apps Mobile</h3>
+                <p>Domine a tela mais importante do mundo: o celular.</p>
+                <ul>
+                <li>Crie Apps Nativos (Android/iOS) com IA</li>
+                <li>Converta sistemas Web em Aplicativos</li>
+                <li>Publicação nas lojas oficiais</li>
+                <li>Monetização com Apps</li>
+                </ul>
+                <button class="train-btn MopenModal" data-train="mobile" style="border-color: var(--neon-orange); color: var(--neon-orange);">Ver Ementa Completa</button>
+            </div>
+            
+            </div>
+
+            <!-- DEPOIMENTOS -->
+            <div id="comments-rotator" class="comments-section">
+            <h3>O que dizem nossos Alunos Fundadores</h3>
+            <div id="comment-display" class="comment">
+                <div class="grl-avatar-small">⟬⧈⟭</div>
+                <div>
+                <p class="user-name"></p>
+                <p class="user-text"></p>
+                </div>
+            </div>
+            </div>
+            
+            <!-- MODAL -->
+            <div id="Mmodal" class="Mmodal">
+            <div class="Mmodal-content">
+                <span class="Mclose">&times;</span>
+                <h2 id="MmodalTitle"></h2>
+                <p id="MmodalDesc"></p>
+                <h3>O que você aprenderá:</h3>
+                <ul id="MmodalList"></ul>
+                <h3>Ao finalizar, você será capaz de:</h3>
+                <p id="MmodalSkills"></p>
+            </div>
+            </div>
+
+        </section>
+
+        <!-- OFERTA FINAL -->
+        <div class="offer-card">
+            <h2 style="font-size: 2rem; margin-bottom: 10px;">Acesso Vitalício UNIT Academy</h2>
+            <p style="color: #a0a0b0;">Garanta a Turma Fundadora com o Pacote 4 em 1.</p>
+
+            <div style="margin: 30px 0;">
+                <p class="price-old">R$ 1.297,00</p>
+                <div class="price-new">R$ 697<span>,99</span></div>
+                <p style="color: #00ff9d; font-size: 0.9rem;">ou 12x de R$ 59,90</p>
+            </div>
+
+            <!-- BOTÃO DE CHECKOUT INTERNO -->
+            <a href="pagamento/pagamento.php" class="btn-buy">
+                QUERO ENTRAR AGORA <i class="fa-solid fa-arrow-right"></i>
+            </a>
+
+            <div style="margin-top: 25px; display: flex; justify-content: center; gap: 20px; color: #666; font-size: 0.8rem;">
+                <span><i class="fa-solid fa-shield-halved"></i> Compra Segura</span>
+                <span><i class="fa-solid fa-rotate-left"></i> 7 Dias de Garantia</span>
+            </div>
+        </div>
+
+        <footer style="text-align: center; margin-top: 50px; color: #444; font-size: 0.8rem;">
+            <p>&copy; 2025 Gustavo Kali. UNIT Academy.</p>
+        </footer>
+
+    </div>
+
+    <script src="js/grade.js"></script>
+    <script type="module">
+        import Typebot from 'https://cdn.jsdelivr.net/npm/@typebot.io/js@0/dist/web.js'
+
+        Typebot.initBubble({
+            typebot: "my-typebot-6jbjqxe",
+            theme: { button: { backgroundColor: "#D27A7D" } },
+        });
+    </script>
+
+</body>
+</html>

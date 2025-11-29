@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ — UNIT Academy</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        /* RESET E BASE */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Poppins", sans-serif; }
+        
+        body {
+            background: #0b0b16;
+            color: #fff;
+            padding: 40px 10%;
+            padding-top: 60px; /* Espaço extra para o botão voltar em telas pequenas */
+        }
+
+        /* BOTÃO VOLTAR */
+        .back-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background: #6c00ff;
+            border: none;
+            border-radius: 8px;
+            color: #fff;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: background 0.25s ease;
+            z-index: 9999;
+            box-shadow: 0 4px 15px rgba(108, 0, 255, 0.3); /* Um brilho sutil */
+        }
+        .back-btn:hover { background: #5200c7; }
+
+        /* INTRO BOX */
+        .intro-box {
+            background: #131325;
+            border: 1px solid #262646;
+            padding: 40px;
+            border-radius: 16px;
+            margin-bottom: 50px;
+            transition: border-color 0.3s ease;
+        }
+        .intro-box:hover { border-color: #6c00ff; }
+        
+        .intro-box h2 { font-size: 26px; margin-bottom: 15px; font-weight: 600; color: #fff; }
+        .intro-box h3 { font-size: 20px; margin-bottom: 12px; margin-top: 30px; color: #dedeff; }
+        .intro-box p { font-size: 16px; line-height: 1.7; margin-bottom: 20px; color: #d1d1e0; }
+        .intro-box .tip { color: #9ca3ff; font-weight: 500; background: rgba(156, 163, 255, 0.1); padding: 10px; border-radius: 6px; display: inline-block; }
+        
+        .intro-box ul { list-style-position: inside; margin-left: 10px; }
+        .intro-box li { font-size: 16px; line-height: 1.8; color: #d1d1e0; margin-bottom: 8px; }
+        .intro-box li strong { color: #fff; }
+
+        /* FAQ SEÇÃO */
+        .faq-title { font-size: 32px; font-weight: 600; margin-bottom: 30px; text-align: left; }
+
+        .faq-item {
+            background: #131325;
+            border: 1px solid #262646;
+            padding: 22px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            overflow: hidden; /* Importante para a borda arredondada */
+        }
+
+        .faq-item:hover { background: #1a1a33; border-color: #4b4b70; }
+        .faq-item.active { border-color: #6c00ff; background: #18182f; }
+
+        .faq-question {
+            font-size: 18px;
+            font-weight: 500;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none; /* Evita selecionar o texto ao clicar rápido */
+        }
+
+        .faq-item .icon { transition: transform 0.3s ease; color: #7f7fff; }
+        .faq-item.active .icon { transform: rotate(180deg); color: #fff; }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: max-height 0.4s ease, opacity 0.4s ease, margin-top 0.3s;
+            color: #d1d1e0;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        .faq-item.active .faq-answer {
+            opacity: 1;
+            max-height: 500px; /* Valor seguro para permitir expansão */
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #2e2e4d; /* Linha separadora sutil */
+        }
+
+        /* MOBILE */
+        @media (max-width: 768px) {
+            body { padding: 20px 5%; padding-top: 70px; }
+            .faq-title { font-size: 26px; }
+            .intro-box { padding: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <button class="back-btn" onclick="history.back()">
+        <i class="fa-solid fa-arrow-left"></i> Voltar
+    </button>
+    
+    <!-- INTRO -->
+    <section class="intro-box">
+        <h2>Comece a usar a UNIT</h2>
+        <p>
+            A UNIT Academy é o seu ambiente completo para criar projetos reais com Inteligência Artificial, 
+            Automação, Programação e Criação Digital. Nossa plataforma foi desenvolvida para criadores que desejam aprender 
+            rapidamente e aplicar imediatamente.
+        </p>
+
+        <p class="tip">
+            <i class="fa-regular fa-lightbulb"></i> Dica: explore a Future Zone para ver projetos e ideias.
+        </p>
+
+        <h3>Quem pode usar a UNIT?</h3>
+        <ul>
+            <li>Qualquer pessoa que deseje aprender IA e automação.</li>
+            <li>Usuários com 14 anos ou mais.</li>
+            <li>Clientes da Assinatura UNIT ou Treinamentos.</li>
+        </ul>
+
+        <h3>Planos de Acesso</h3>
+        <ul>
+            <li><strong>Assinatura UNIT:</strong> acesso contínuo e atualizações semanais.</li>
+            <li><strong>Treinamentos Individuais:</strong> acesso vitalício e certificado.</li>
+            <li><strong>Acesso Empresarial:</strong> soluções para negócios.</li>
+        </ul>
+
+        <h3>Onde posso usar?</h3>
+        <ul>
+            <li>Brasil e países lusófonos.</li>
+            <li>Navegadores modernos (Chrome, Edge, Safari).</li>
+            <li>Windows, MacOS, Android e iOS.</li>
+        </ul>
+    </section>
+
+    <!-- FAQ -->
+    <header>
+        <h1 class="faq-title">Perguntas Frequentes</h1>
+    </header>
+
+    <section class="faq-container">
+        <!-- Item 1 -->
+        <div class="faq-item">
+            <div class="faq-question">
+                O que eu encontro dentro da UNIT Academy?
+                <i class="fa-solid fa-chevron-down icon"></i>
+            </div>
+            <div class="faq-answer">
+                Acesso a treinamentos completos, projetos reais, ferramentas de IA, automações, bots,
+                páginas profissionais e sistemas inteligentes para criar no mundo real.
+            </div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="faq-item">
+            <div class="faq-question">
+                Quais áreas a UNIT cobre?
+                <i class="fa-solid fa-chevron-down icon"></i>
+            </div>
+            <div class="faq-answer">
+                IA, Automação, Programação Web, Criação Digital, Marketing Digital e Futurismo aplicado.
+            </div>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="faq-item">
+            <div class="faq-question">
+                Preciso ter experiência para começar?
+                <i class="fa-solid fa-chevron-down icon"></i>
+            </div>
+            <div class="faq-answer">
+                Não. Todos os treinamentos foram feitos para iniciantes e intermediários, com apoio de IA para acelerar a evolução.
+            </div>
+        </div>
+
+        <!-- Item 4 -->
+        <div class="faq-item">
+            <div class="faq-question">
+                Há certificado ao concluir?
+                <i class="fa-solid fa-chevron-down icon"></i>
+            </div>
+            <div class="faq-answer">
+                Sim. Todos os treinamentos oferecem certificado oficial validado pela UNIT Academy.
+            </div>
+        </div>
+
+        <!-- Item 5 -->
+        <div class="faq-item">
+            <div class="faq-question">
+                Por quanto tempo tenho acesso?
+                <i class="fa-solid fa-chevron-down icon"></i>
+            </div>
+            <div class="faq-answer">
+                Ao adquirir um treinamento individual, ele é seu para sempre. Na assinatura, o acesso é enquanto ela estiver ativa.
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const faqItems = document.querySelectorAll(".faq-item");
+
+        faqItems.forEach(item => {
+            item.addEventListener("click", () => {
+                // Se quiser que feche os outros ao abrir um:
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove("active");
+                    }
+                });
+
+                // Alterna o atual
+                item.classList.toggle("active");
+            });
+        });
+    </script>
+
+</body>
+</html>
